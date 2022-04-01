@@ -2,6 +2,7 @@
   "name": "staging-xin",
   "version": "1.0.0",
   "main": "index.js",
+  "private": "true",
   "license": "MIT",
   "devDependencies": {
     "lerna": "^4.0.0"
