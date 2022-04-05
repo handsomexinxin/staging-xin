@@ -6,7 +6,6 @@ dist/
 /.vscode/tasks.json
 yarn-error.log
 /*.tgz
-package-lock.json
 .npmrc
 .yarnrc
 tsconfig.tsbuildinfo
