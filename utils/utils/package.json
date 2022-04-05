@@ -1,11 +1,11 @@
 {
-  "name": "@pu-teng/core",
+  "name": "@puteng-staging/utils",
   "version": "1.0.4",
   "description": "> TODO: description",
   "author": "xin <hx17693012635@163.com>",
   "homepage": "",
   "license": "MIT",
-  "main": "lib/core.js",
+  "main": "lib/utils.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
