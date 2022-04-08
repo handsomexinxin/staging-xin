@@ -1,7 +1,7 @@
 {
-  "name": "@puteng-staging/exec",
+  "name": "@puteng-staging/format-path",
   "version": "1.0.6",
-  "description": "@puteng-staging execute package",
+  "description": "format path",
   "author": "xin <hx17693012635@163.com>",
   "homepage": "https://github.com/handsomexinxin/staging-xin#readme",
   "license": "ISC",
@@ -25,9 +25,5 @@
   },
   "bugs": {
     "url": "https://github.com/handsomexinxin/staging-xin/issues"
-  },
-  "dependencies": {
-    "@puteng-staging/log": "^1.0.6",
-    "@puteng-staging/package": "^1.0.6"
   }
 }

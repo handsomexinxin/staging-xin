@@ -5,7 +5,7 @@
 	"author": "xin <hx17693012635@163.com>",
 	"homepage": "",
 	"license": "MIT",
-	"main": "lib/core.js",
+	"main": "lib/index.js",
 	"bin": {
 		"staging-cli-dev": "./bin/index.js"
 	},

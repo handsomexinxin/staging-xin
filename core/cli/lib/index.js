@@ -6,15 +6,13 @@ const commander = require("commander");
 const {homedir} = require("os");
 const pathExists = require("path-exists");
 
-// const utils = require("@puteng-staging/utils");
 const log = require("@puteng-staging/log");
 const init = require("@puteng-staging/init");
 const exec = require("@puteng-staging/exec");
 const pkg = require("../package.json");
 const {LOW_NODE_VERSION, DEFAULT_CLI_HOME} = require("./const");
 const useHome = homedir()
-let args;
-// utils()
+
 const program = new commander.Command();
 async function core() {
     try {
@@ -34,7 +32,7 @@ function registerCommand() {
         .option("-tp --targetPath <targetPath>", "是否指定本地调试文件路径");
 
     program
-        .command("init <projectName>")
+        .command("init [projectName]")
         .option("-f --force", "是否强制初始化项目", false)
         .action(exec);
 
