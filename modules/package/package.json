@@ -1,6 +1,6 @@
 {
   "name": "@puteng-staging/package",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "@puteng-staging package",
   "author": "xin <hx17693012635@163.com>",
   "homepage": "https://github.com/handsomexinxin/staging-xin#readme",
@@ -27,9 +27,9 @@
     "url": "https://github.com/handsomexinxin/staging-xin/issues"
   },
   "dependencies": {
-    "@puteng-staging/format-path": "^1.0.6",
-    "@puteng-staging/npm-get-info": "^1.0.6",
-    "@puteng-staging/utils": "^1.0.6",
+    "@puteng-staging/format-path": "^1.0.7",
+    "@puteng-staging/npm-get-info": "^1.0.7",
+    "@puteng-staging/utils": "^1.0.7",
     "npminstall": "^6.1.0",
     "pkg-dir": "5.0.0"
   }

@@ -1,6 +1,6 @@
 {
 	"name": "@puteng-staging/cli",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "> TODO: description",
 	"author": "xin <hx17693012635@163.com>",
 	"homepage": "",
@@ -23,11 +23,11 @@
 		"test": "echo \"Error: run tests from root\" && exit 1"
 	},
 	"dependencies": {
-		"@puteng-staging/exec": "^1.0.6",
-		"@puteng-staging/init": "^1.0.6",
+		"@puteng-staging/exec": "^1.0.7",
+		"@puteng-staging/init": "^1.0.7",
 		"@puteng-staging/log": "^1.0.6",
-		"@puteng-staging/npm-get-info": "^1.0.6",
-		"@puteng-staging/utils": "^1.0.6",
+		"@puteng-staging/npm-get-info": "^1.0.7",
+		"@puteng-staging/utils": "^1.0.7",
 		"colors": "^1.4.0",
 		"commander": "^9.1.0",
 		"dotenv": "^16.0.0",
