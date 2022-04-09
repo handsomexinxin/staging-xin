@@ -1,8 +1,10 @@
 'use strict';
 const pkgDir = require("pkg-dir").sync;
+const npmInstall = require("npminstall");
 const path = require("path");
 const {isObject} = require("@puteng-staging/utils");
 const formatPath = require("@puteng-staging/format-path");
+const {getDefaultRegistry} = require("@puteng-staging/npm-get-info");
 
 class Package {
     constructor(options) {
@@ -14,8 +16,8 @@ class Package {
         }
         // package目标路径
         this.targetPath = options.targetPath;
-        // // package的缓存路径
-        // this.storePath = options.storePath;
+        // package的缓存路径
+        this.storeDir = options.storeDir;
         // package的name
         this.packageName = options.packageName;
          // package的version
@@ -23,10 +25,19 @@ class Package {
     }
     // 判断当前package是否存在
     exists() {
-
+        return false
     }
     // 安装package
-    install() { }
+    install() {
+        npmInstall({
+            root: this.targetPath,// 安装根目录
+            storeDir: this.storeDir,// 缓存目录
+            registry: getDefaultRegistry(),
+            pkgs: [
+                {name: this.packageName, version: this.packageVersion} 
+            ]
+        })
+    }
 
     // 更新package
     update() { }
