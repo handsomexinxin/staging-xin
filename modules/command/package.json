@@ -1,7 +1,7 @@
 {
-  "name": "@puteng-staging/init",
+  "name": "@puteng-staging/command",
   "version": "1.0.7",
-  "description": "@puteng-staging init",
+  "description": "> TODO: description",
   "author": "xin <hx17693012635@163.com>",
   "homepage": "https://github.com/handsomexinxin/staging-xin#readme",
   "license": "ISC",
@@ -27,7 +27,9 @@
     "url": "https://github.com/handsomexinxin/staging-xin/issues"
   },
   "dependencies": {
-    "@puteng-staging/command": "^1.0.7",
-    "@puteng-staging/log": "^1.0.6"
+    "@puteng-staging/log": "^1.0.6",
+    "@puteng-staging/utils": "^1.0.7",
+    "colors": "^1.4.0",
+    "semver": "^7.3.5"
   }
 }

@@ -10,7 +10,7 @@ const log = require("@puteng-staging/log");
 const init = require("@puteng-staging/init");
 const exec = require("@puteng-staging/exec");
 const pkg = require("../package.json");
-const {LOW_NODE_VERSION, DEFAULT_CLI_HOME} = require("./const");
+const {DEFAULT_CLI_HOME} = require("./const");
 const useHome = homedir()
 
 const program = new commander.Command();
@@ -71,7 +71,6 @@ function registerCommand() {
 
 async function prepare() {
     checkPkgVersion();
-    checkNodeVersion();
     checkRoot();
     checkUserHome();
     checkEnv();
@@ -81,14 +80,6 @@ async function prepare() {
 function checkPkgVersion() {// 输出当前包版本
     log.notice("cli", pkg.version);
 };
-
-function checkNodeVersion() {// 检查node版本
-    const currentVersion = process.version;
-    if (semver.gte(LOW_NODE_VERSION, currentVersion)) {
-        throw new Error(colors.red("puteng-staging 需要安装 ${LOW_NODE_VERSION} 以上版本的 Node.js"))
-    }
-    log.info(process.version);
-}
 
 function checkRoot() {// 检查执行权限
     require("root-check")();// 需要修改文件  防止修改高级权限文件  将执行权限降级为普通权限（mac 501）
