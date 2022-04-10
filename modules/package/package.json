@@ -30,7 +30,9 @@
     "@puteng-staging/format-path": "^1.0.7",
     "@puteng-staging/npm-get-info": "^1.0.7",
     "@puteng-staging/utils": "^1.0.7",
+    "fs-extra": "^10.0.1",
     "npminstall": "^6.1.0",
+    "path-exists": "4.0.0",
     "pkg-dir": "5.0.0"
   }
 }

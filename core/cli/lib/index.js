@@ -20,6 +20,10 @@ async function core() {
         registerCommand();
     } catch (e) {
         log.error(e.message);
+        const opts = program.opts();
+        if (opts.debug === true) {
+            console.log(e);
+        }
     }
 };
 // 初始化脚手架
@@ -124,7 +128,7 @@ async function checkGlobalUpdate() {// 版本号检查
     const {getNpmSemverVersions} = require("@puteng-staging/npm-get-info");
     const lastVersion = await getNpmSemverVersions(pkgName);
     if (lastVersion !== undefined && semver.gt(lastVersion, currentVersion)) {
-         log.warn(colors.yellow("更新提示", `
+        log.warn(colors.yellow("更新提示", `
 请手动更新 ${pkgName} ，当前版本${currentVersion}，最新版本${lastVersion}。
 更新命令：yarn global add ${pkgName}
 `))

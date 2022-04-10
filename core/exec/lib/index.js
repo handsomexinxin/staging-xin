@@ -9,7 +9,7 @@ const SETTINGS = {
 }
 const CACHE_DIR = "dependencies"
 
-function exec() {
+async function exec() {
     let pkg;
     let targetPath = process.env.CLI_TARGET_PATH;
     const homePath = process.env.CLI_HOME_PATH;
@@ -24,19 +24,19 @@ function exec() {
         log.verbose("targetPath", targetPath)
         log.verbose("storeDir", storeDir)
         pkg = new Package({targetPath, homePath, packageName, packageVersion, storeDir})
-        if(pkg.exists()) {
+        if(await pkg.exists()) {
             // 存在则更新package
-    
+            await pkg.update();
         }else {
             // 安装package
-            pkg.install()
-
+            await pkg.install();
         }
+        // console.log("pkg.getRootFilePath()", pkg.getRootFilePath());
     } else {
         pkg = new Package({targetPath, packageName, packageVersion})
+        console.log("pkg.getRootFilePath()", pkg.getRootFilePath());
         const rootFile = pkg.getRootFilePath();
         require(rootFile).apply(null, arguments);
-
     }
     // console.log(pkg.getRootFilePath());
 }
