@@ -28,6 +28,9 @@
   },
   "dependencies": {
     "@puteng-staging/command": "^1.0.7",
-    "@puteng-staging/log": "^1.0.6"
+    "@puteng-staging/log": "^1.0.6",
+    "fs-extra": "^10.0.1",
+    "inquirer": "^8.2.2",
+    "semver": "^7.3.7"
   }
 }

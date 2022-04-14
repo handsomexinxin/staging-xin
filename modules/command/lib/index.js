@@ -7,7 +7,7 @@ const LOW_NODE_VERSION = "12.0.0";
 
 class Command {
     constructor(argv) {
-        console.log("command constructor");
+        // log.verbose("command constructor");
         this._argv = argv;
         if(argv === undefined) {
             throw new Error("参数不能为空");
