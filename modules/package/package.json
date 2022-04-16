@@ -1,6 +1,6 @@
 {
   "name": "@puteng-staging/package",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "@puteng-staging package",
   "author": "xin <hx17693012635@163.com>",
   "homepage": "https://github.com/handsomexinxin/staging-xin#readme",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@puteng-staging/format-path": "^1.0.7",
-    "@puteng-staging/npm-get-info": "^1.0.7",
+    "@puteng-staging/npm-get-info": "^1.0.8",
     "@puteng-staging/utils": "^1.0.7",
     "fs-extra": "^10.0.1",
     "npminstall": "^6.1.0",

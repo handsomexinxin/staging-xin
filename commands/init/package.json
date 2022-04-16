@@ -1,6 +1,6 @@
 {
   "name": "@puteng-staging/init",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "@puteng-staging init",
   "author": "xin <hx17693012635@163.com>",
   "homepage": "https://github.com/handsomexinxin/staging-xin#readme",
@@ -27,7 +27,7 @@
     "url": "https://github.com/handsomexinxin/staging-xin/issues"
   },
   "dependencies": {
-    "@puteng-staging/command": "^1.0.7",
+    "@puteng-staging/command": "^1.0.8",
     "@puteng-staging/log": "^1.0.6",
     "fs-extra": "^10.0.1",
     "inquirer": "^8.2.2",

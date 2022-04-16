@@ -1,6 +1,6 @@
 {
   "name": "@puteng-staging/exec",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "@puteng-staging execute package",
   "author": "xin <hx17693012635@163.com>",
   "homepage": "https://github.com/handsomexinxin/staging-xin#readme",
@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "@puteng-staging/log": "^1.0.6",
-    "@puteng-staging/package": "^1.0.7"
+    "@puteng-staging/package": "^1.0.8"
   }
 }
