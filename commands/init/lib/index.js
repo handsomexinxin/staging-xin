@@ -1,10 +1,15 @@
 'use strict';
 const Command = require("@puteng-staging/command");
 const fs = require("fs");
+const path = require("path");
+const userHome = require("user-home");
 const fse = require("fs-extra");
 const semver = require("semver");
 const inquirer = require("inquirer");
 const log = require("@puteng-staging/log");
+const Package = require("@puteng-staging/package");
+const {spinnerStart, sleep} = require("@puteng-staging/utils");
+const getProjectTemplate = require("./getProjectTemplate");
 
 const TYPE_PROJECT = "project";
 const TYPE_COMPONENT = "component";
@@ -19,23 +24,66 @@ class InitCommand extends Command {
     async exec() {
         try {
             const projectInfo = await this.prepare()
-            if (ret !== undefined) {
-                this.downloadTemplate();
-                console.log({projectInfo});
+            this.projectInfo = projectInfo;
+            if (projectInfo !== undefined) {
+                await this.downloadTemplate();
             }
         } catch (e) {
             console.log(e);
         }
         // console.log("init 工作逻辑");
     }
-    downloadTemplate() {
+
+    async downloadTemplate() {
+        const {projectTemplate} = this.projectInfo;
+        const templateInfo = this.template.find(item => item.npmName === projectTemplate)
+        // log.verbose(projectTemplate, userHome);
+        const targetPath = path.resolve(userHome, ".puteng-staging-dev", "template")
+        const storeDir = path.resolve(userHome, ".puteng-staging-dev", "template", "node_modules")
+        const {version, npmName} = templateInfo;
+        // console.log(targetPath, storeDir);
+        const templateNpm = new Package({
+            packageName: npmName,
+            packageVersion: version,
+            storeDir,
+            targetPath
+        });
+        if (! await templateNpm.exists()) {
+            const spinner = spinnerStart(`正在安装${npmName}...`);
+            try {
+                await templateNpm.install();
+                log.success("下载模板成功")
+                await sleep();
+            } catch (error) {
+                throw error;
+            } finally {
+                spinner.stop(true);
+            }
+        } else {
+            const spinner = spinnerStart(`正在更新${npmName}...`);
+            try {
+                await templateNpm.update();
+                log.success("更新模板成功");
+                await sleep();
+            } catch (error) {
+                throw error;
+            } finally {
+                spinner.stop(true);
+            }
+        }
         // 1、通过项目模板API获取项目模板信息
         // 1.1 通过 egg.js 搭建一套后端系统
         // 1.2、通过npm存储项目模板
         // 1.3、将项目模板信息存储到 mongodb 数据库中
         // 1.4、通过 egg.js 获取 mongodb 中的数据并且通过 API 返回
     }
+
     async prepare() {
+        const template = await getProjectTemplate();
+        if (!template || template.length === 0) {
+            throw new Error("项目模板不存在");
+        }
+        this.template = template
         // throw new Error("出错了")
         // 判断当前目录是否为空
         const localPath = process.cwd();
@@ -132,9 +180,15 @@ class InitCommand extends Command {
                         }
                         return v;
                     }
+                },
+                {
+                    type: "list",
+                    name: "projectTemplate",
+                    message: "请选择项目模板",
+                    choices: this.createTemplateChoices()
                 }
             ])
-            return{
+            return {
                 ...project,
                 type
             }
@@ -142,6 +196,10 @@ class InitCommand extends Command {
 
         }
         // return projectInfo
+    }
+
+    createTemplateChoices() {
+        return this.template.map(item => ({value: item.npmName, name: item.name}))
     }
 
     isDirEmpty(localPath) {

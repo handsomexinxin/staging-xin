@@ -48,7 +48,7 @@ class Package {
     async exists() {
         if (this.storeDir) {
             await this.prepare();
-            return pathExists(this.cacheFilePath)
+            return pathExists(this.cacheFilePath);
         } else {
             return pathExists(this.targetPath);
         }
